@@ -1,6 +1,7 @@
 // app/(auth)/login/page.tsx
 "use client";
 
+import { useAuthRedirect } from "@/lib/useAuthRedirect";
 import Link from "next/link";
 import { useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
@@ -9,6 +10,7 @@ import { supabase } from "../../../lib/supabaseClient";
 type Mode = "email" | "phone";
 
 export default function LoginPage() {
+  useAuthRedirect({ when: "authenticated", redirectTo: "/" });
   const [mode, setMode] = useState<Mode>("email");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -107,7 +109,7 @@ export default function LoginPage() {
             {loading ? "Đang gửi..." : "Gửi OTP SMS"}
           </button>
           <p className="text-xs text-gray-500">
-            Đã nhận mã? <Link className="underline" href="/verify-otp">Nhập OTP tại đây</Link>.
+            Đã nhận mã? <Link className="underline" href="/verify-phone">Nhập OTP tại đây</Link>.
           </p>
         </form>
       )}

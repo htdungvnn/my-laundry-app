@@ -13,8 +13,8 @@ export default function LandingPage() {
             Đặt lịch trong vài phút. Chúng tôi nhận đồ, giặt sạch, gấp gọn và giao lại trong 24–48 giờ.
           </p>
           <div className="mt-6 flex gap-3">
-            <Link href="/pricing" className="rounded-xl bg-black text-white px-5 py-3">Xem bảng giá</Link>
-            <Link href="/services" className="rounded-xl border px-5 py-3">Dịch vụ</Link>
+            <Link href="/public/pricing" className="rounded-xl bg-black text-white px-5 py-3">Xem bảng giá</Link>
+            <Link href="/public/services" className="rounded-xl border px-5 py-3">Dịch vụ</Link>
           </div>
           <p className="mt-4 text-xs text-gray-500">Hiện phục vụ một số quận tại TP.HCM.</p>
         </div>

@@ -2,12 +2,14 @@
 "use client";
 
 import { supabase } from "@/lib/supabaseClient";
+import { useAuthRedirect } from "@/lib/useAuthRedirect";
 import Link from "next/link";
 import { useState } from "react";
 
 type Mode = "email" | "phone";
 
 export default function SignupPage() {
+   useAuthRedirect({ when: "authenticated", redirectTo: "/" });
   const [mode, setMode] = useState<Mode>("email");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -43,8 +45,19 @@ export default function SignupPage() {
       options: { shouldCreateUser: true },
     });
     setLoading(false);
-    if (error) setError(error.message);
-    else setNotice("Đã gửi OTP SMS. Nhập mã tại trang xác thực OTP.");
+     if (error) {
+    setError(error.message);
+  } else {
+    setNotice(
+      <>
+        Đã gửi OTP SMS.{" "}
+        <Link href="./verify-otp" className="underline">
+          Nhập mã tại trang xác thực OTP
+        </Link>
+        .
+      </>
+    );
+  }
   }
 
   return (

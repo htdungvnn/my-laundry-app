@@ -1,4 +1,5 @@
 // app/(public)/layout.tsx
+import HeaderAuthActions from "@/components/auth/HeaderAuthActions";
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
@@ -37,6 +38,9 @@ function Header() {
         <div className="md:hidden">
           <Link href="/public/contact" className="rounded-lg border px-3 py-1.5 text-sm">Liên hệ</Link>
         </div>
+
+        {/* Actions: Đăng nhập/Đăng ký hoặc Đăng xuất/Tài khoản */}
+        <HeaderAuthActions />
       </div>
     </header>
   );
